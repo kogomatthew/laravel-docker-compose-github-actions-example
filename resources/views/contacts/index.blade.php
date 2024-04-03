@@ -9,7 +9,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Invites</th>
+                    <th>Number Invites</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                         <td>{{ $contact->name }}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->phone }}</td>
-                        <td>{{ $contact->invites_count }}</td> 
+                        <td style="color:blue;">{{ $contact->invites_count }}</td> 
                     </tr>
                 @endforeach
             </tbody>
