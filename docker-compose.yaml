@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  main:
+    container_name: my_app_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "php artisan serve --host=0.0.0.0"
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    container_name: my_app_db
+    platform: linux/arm64
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '12345'
+      MYSQL_DATABASE: my_app
+    volumes: 
+      - ./db:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - '3307:3306'
