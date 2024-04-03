@@ -1,4 +1,4 @@
-name: Deploy
+name: production-deploy
 
 # Trigger the workflow on push or pull request events on the production branch
 
@@ -23,4 +23,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
-          script: "cd /var/www/html/my_app &&  ./.scripts/deploy.sh"
+          script: "./.scripts/deploy.sh"

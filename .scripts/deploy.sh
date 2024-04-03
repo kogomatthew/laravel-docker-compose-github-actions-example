@@ -7,6 +7,9 @@ echo "Deployment started ....."
 
 # Enter maintenance mode
 echo "Entering maintenance mode..."
+
+cd /var/www/html/my_app
+
 php artisan down --message="Deploying new changes..." || true
 
 echo "Pulling the latest changes from the git repository..."
