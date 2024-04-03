@@ -9,7 +9,7 @@ on:
   pull_request:
     branches:
       - production
-# authenticate to the server via ssh and run our deployment script
+# authenticate to the server via ssh and run our deployment script to deploy the app
 
 jobs:
   deploy:
