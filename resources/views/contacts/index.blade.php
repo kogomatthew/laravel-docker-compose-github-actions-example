@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>All Contacts</h1>
+        <h1>All Contacts with invite count</h1>
         <table class="table">
             <thead>
                 <tr>
