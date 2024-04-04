@@ -19,3 +19,7 @@ jobs:
           cd /var/www/html/my_app
           git checkout production
           git pull origin production
+          composer install --no-dev --optimize-autoloader
+          php artisan migrate --force --seed
+          php artisan config:cache
+          php artisan route:cache
