@@ -16,8 +16,6 @@ jobs:
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
         script:  |
-          cd /var/www/my_app
+          cd /var/www/html/my_app
           git checkout production
-          git pull
-          npm install
-          npm run build 
+          git pull origin production
