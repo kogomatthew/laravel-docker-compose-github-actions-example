@@ -15,4 +15,9 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/html/my_app && ./server_deploy.sh'
+        script:  |
+          cd /var/www/my_app
+          git checkout production
+          git pull
+          npm install
+          npm run build 
