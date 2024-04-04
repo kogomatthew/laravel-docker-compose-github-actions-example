@@ -1,0 +1,26 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - production
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Pull Docker image
+              run: docker pull  kogomatthew/my_app:latest
+
+            - name: Set up environment
+              run: |
+                cp .env.example .env
+                composer install
+                php artisan key:generate
+
+            - name: Run tests
+              run: vendor/bin/phpunit
