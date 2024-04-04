@@ -1,4 +1,4 @@
-name: Yellow Laravel Deployment
+name: My App Deploy
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/my_app && ./server_deploy.sh'
+        script: 'cd /var/www/html/my_app && ./server_deploy.sh'
