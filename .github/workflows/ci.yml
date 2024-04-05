@@ -26,7 +26,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
-        target: /var/www/html/my_app
         script:  | 
           git checkout production
           git pull origin production
