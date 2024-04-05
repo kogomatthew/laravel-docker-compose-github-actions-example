@@ -10,15 +10,15 @@ jobs:
     steps: 
     - uses: getong/mariadb-action@v1.1
       with:
-          host port: 3306 # Optional, default value is 3306. The port of host
-          container port: 3306 # Optional, default value is 3306. The port of container
-          character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-          collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
-          mariadb version: 'latest' # Optional, default value is "latest". The version of the MariaDB
-          mysql database: 'my_app' # Optional, default value is "test". The specified database which will be create
-          mysql root password: 12345 # Required if "mysql user" is empty, default is empty. The root superuser password
-          mysql user: 'admin' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-          mysql password: 12345 # Required if "mysql user" exists. The password for the "mysql user"
+         host port: 3306 # Optional, default value is 3306. The port of host
+         container port: 3306 # Optional, default value is 3306. The port of container
+         haracter set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+         ollation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+         mariadb version: 'latest' # Optional, default value is "latest". The version of the MariaDB
+         mysql database: 'my_app' # Optional, default value is "test". The specified database which will be create
+         mysql root password: 12345 # Required if "mysql user" is empty, default is empty. The root superuser password
+         mysql user: 'admin' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+         mysql password: 12345 # Required if "mysql user" exists. The password for the "mysql user"
     - uses: actions/checkout@v2
     - name: Deploy to production
       uses: appleboy/ssh-action@master
@@ -26,8 +26,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
-        script:  |
-          cd /var/www/html/my_app
+        target: /var/www/html/my_app
+        script:  | 
           git checkout production
           git pull origin production
           composer install --no-dev --optimize-autoloader
