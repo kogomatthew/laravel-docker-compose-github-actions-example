@@ -5,16 +5,21 @@ on:
     branches: [ production ]
 
 jobs:
-  test:
+  pull: 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
-    - name: Test with PHPUnit
-      run: ./vendor/bin/phpunit
-      working-directory: ./var/www/html/my_app/
-
-
+    - name: Pull from production
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.SSH_KEY }}
+        script:  | 
+          git checkout production
+          git pull origin production
+          composer install --no-dev --optimize-autoloader 
+ 
   deploy:
     runs-on: ubuntu-latest
     steps: 
@@ -36,10 +41,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
-        script:  | 
-          git checkout production
-          git pull origin production
-          composer install --no-dev --optimize-autoloader
+        script:  |  
           php artisan migrate --force --seed
           php artisan config:cache
           php artisan route:cache
