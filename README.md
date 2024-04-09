@@ -13,7 +13,7 @@ This repository serves as an example of setting up a Laravel project with Docker
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your-username/laravel-docker-compose-github-actions-example.git
+    git clone https://github.com/kogomatthew/laravel-docker-compose-github-actions-example.git
     ```
 
 2. Navigate to the project directory:
